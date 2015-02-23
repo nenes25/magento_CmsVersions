@@ -1,0 +1,214 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Configuration du module
+ *
+ * @category    Hhennes
+ * @package     Hhennes_CmsVersions
+ * @license     http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
+ * @author herve - <contact@h-hennes.fr>
+ * @copyright Copyright (c) hhennes 2015 (http://www.h-hennes.fr)
+ */
+-->
+<config>
+    <modules>
+        <Hhennes_CmsVersions>
+            <version>0.6.0</version>    
+        </Hhennes_CmsVersions>
+    </modules>
+    
+	<global>
+        <models>
+            <Hhennes_CmsVersions>
+                <class>Hhennes_CmsVersions_Model</class>
+                <resourceModel>etatpurcms_mysql4</resourceModel>
+            </Hhennes_CmsVersions>
+            <cms>
+                <rewrite>
+                    <block>Hhennes_CmsVersions_Model_Cms_Block</block>
+                </rewrite>
+            </cms>
+            <etatpurcms_mysql4>
+                <class>Hhennes_CmsVersions_Model_Mysql4</class>
+                <entities>
+                    <page>
+                        <table>cms_page_versions</table>
+                    </page>
+                    <block>
+                        <table>cms_block_versions</table>
+                    </block>
+                </entities>
+            </etatpurcms_mysql4>
+        </models> 
+        <helpers>
+            <Hhennes_CmsVersions>
+                <class>Hhennes_CmsVersions_Helper</class>
+            </Hhennes_CmsVersions> 
+        </helpers>
+        <blocks>
+            <Hhennes_CmsVersions>
+                <class>Hhennes_CmsVersions_Block</class>
+            </Hhennes_CmsVersions> 
+        </blocks>
+        <resources>
+            <hhennescms_setup>
+                <setup>
+                    <module>Hhennes_CmsVersions</module>
+                    <class>Mage_Core_Model_Resource_Setup</class>
+                </setup>
+                <connection>
+                    <use>core_setup</use>
+                </connection>
+            </hhennes_setup>
+            <hhennescms_write>
+                <connection>
+                    <use>core_write</use>
+                </connection>
+            </hhennescms_write>
+            <hhennescms_read>
+                <connection>
+                    <use>core_read</use>
+                </connection>
+            </hhennescms_read>
+        </resources>
+        <events>
+            <cms_page_save_after>
+                <observers>
+                    <save_page_version>
+                        <type>singleton</type>
+                        <class>Hhennes_CmsVersions/observer</class>
+                        <method>savePageVersion</method>    
+                    </save_page_version>    
+                </observers>    
+            </cms_page_save_after>
+            <cms_page_delete_after>
+                <observers>
+                    <delete_page_version>
+                        <type>singleton</type>
+                        <class>Hhennes_CmsVersions/observer</class>
+                        <method>deletePageVersion</method>    
+                    </delete_page_version>    
+                </observers>    
+            </cms_page_delete_after>
+            <cms_block_save_after>
+                <observers>
+                    <save_block_version>
+                        <type>singleton</type>
+                        <class>Hhennes_CmsVersions/observer</class>
+                        <method>saveBlockVersion</method>    
+                    </save_block_version>    
+                </observers>    
+            </cms_block_save_after>
+            <cms_block_delete_after>
+                <observers>
+                    <delete_block_version>
+                        <type>singleton</type>
+                        <class>Hhennes_CmsVersions/observer</class>
+                        <method>deleteBlockVersion</method>    
+                    </delete_block_version>    
+                </observers>    
+            </cms_block_delete_after>
+        </events>
+    </global>
+    
+    <admin>
+        <routers>
+            <Hhennes_CmsVersions>
+                <use>admin</use>
+                <args>
+                    <module>Hhennes_CmsVersions</module>
+                    <frontName>Hhennes_CmsVersions</frontName>
+                </args>
+            </Hhennes_CmsVersions>
+        </routers>
+    </admin>
+    
+    <adminhtml>
+        <menu>
+            <cms>
+                <children>
+                    <Hhennes_CmsVersions translate="title" module="Hhennes_CmsVersions">
+                        <title>Sauvegardes</title>
+                        <sort_order>20</sort_order>
+                        <children>
+                            <Hhennes_CmsVersions_page translate="title" module="Hhennes_CmsVersions">
+                                <title>Sauvegardes Pages</title>
+                                <sort_order>10</sort_order>
+                                <action>Hhennes_CmsVersions/adminhtml_page</action>  
+                            </Hhennes_CmsVersions_page>
+                            <Hhennes_CmsVersions_block translate="title" module="Hhennes_CmsVersions">
+                                <title>Sauvegardes Blocs Statiques</title>
+                                <sort_order>20</sort_order>
+                                <action>Hhennes_CmsVersions/adminhtml_block</action>  
+                            </Hhennes_CmsVersions_block>
+                        </children>  
+                    </Hhennes_CmsVersions>
+                </children>
+            </cms>
+        </menu>
+        <acl>
+            <resources>
+                <admin>
+                    <children>
+                        <cms>
+                            <children>
+                                <Hhennes_CmsVersions translate="title" module="Hhennes_CmsVersions">
+                                    <title>Sauvegardes</title>
+                                    <sort_order>20</sort_order>
+                                    <children>
+                                        <Hhennes_CmsVersions_page translate="title" module="Hhennes_CmsVersions">
+                                            <title>Sauvegardes Pages</title>
+                                            <sort_order>10</sort_order>
+                                            <action>Hhennes_CmsVersions/adminhtml_page</action>  
+                                        </Hhennes_CmsVersions_page>
+                                        <Hhennes_CmsVersions_block translate="title" module="Hhennes_CmsVersions">
+                                            <title>Sauvegardes Blocs Statiques</title>
+                                            <sort_order>20</sort_order>
+                                            <action>Hhennes_CmsVersions/adminhtml_block</action>  
+                                        </Hhennes_CmsVersions_block>
+                                    </children>  
+                                </Hhennes_CmsVersions>
+                            </children>
+                        </cms>
+                    </children>
+                </admin>
+            </resources>
+        </acl>
+        <layout>
+            <updates>
+                <Hhennes_CmsVersions>
+                    <file>Hhennes_CmsVersions.xml</file>
+                </Hhennes_CmsVersions>
+            </updates>
+        </layout>
+        <translate>
+            <modules>
+                <Hhennes_CmsVersions>
+                    <files>
+                        <default>Hhennes_CmsVersions.csv</default>
+                    </files>
+                </Hhennes_CmsVersions>
+            </modules>
+        </translate>
+    </adminhtml>
+    
+    <frontend>
+        <routers>
+            <Hhennes_CmsVersions>
+                <use>standard</use>
+                <args>
+                    <module>Hhennes_CmsVersions</module>
+                    <frontName>Hhennes_CmsVersions</frontName>
+                </args>
+            </Hhennes_CmsVersions>
+        </routers>
+        <layout>
+            <updates>
+                <Hhennes_CmsVersions>
+                    <file>Hhennes_CmsVersions.xml</file>
+                </Hhennes_CmsVersions>
+            </updates>
+        </layout>
+    </frontend>
+
+</config>

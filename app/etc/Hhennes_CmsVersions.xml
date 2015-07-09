@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config>
+    <modules>
+        <Hhennes_CmsVersions>
+            <active>true</active>
+            <codePool>community</codePool>
+        </Hhennes_CmsVersions>
+    </modules>
+</config>

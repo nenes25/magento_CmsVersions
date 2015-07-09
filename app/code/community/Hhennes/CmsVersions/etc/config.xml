@@ -13,7 +13,7 @@
 <config>
     <modules>
         <Hhennes_CmsVersions>
-            <version>0.6.0</version>    
+            <version>0.1.0</version>    
         </Hhennes_CmsVersions>
     </modules>
     
@@ -21,14 +21,14 @@
         <models>
             <Hhennes_CmsVersions>
                 <class>Hhennes_CmsVersions_Model</class>
-                <resourceModel>etatpurcms_mysql4</resourceModel>
+                <resourceModel>hhennescms_mysql4</resourceModel>
             </Hhennes_CmsVersions>
             <cms>
                 <rewrite>
                     <block>Hhennes_CmsVersions_Model_Cms_Block</block>
                 </rewrite>
             </cms>
-            <etatpurcms_mysql4>
+            <hhennescms_mysql4>
                 <class>Hhennes_CmsVersions_Model_Mysql4</class>
                 <entities>
                     <page>
@@ -38,7 +38,7 @@
                         <table>cms_block_versions</table>
                     </block>
                 </entities>
-            </etatpurcms_mysql4>
+            </hhennescms_mysql4>
         </models> 
         <helpers>
             <Hhennes_CmsVersions>

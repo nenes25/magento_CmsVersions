@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+    Document   : etatpur_cms.xml
+    Created on : 6 novembre 2012, 15:16
+    Author     : herve
+    Description:
+        Purpose of the document follows.
+-->
+<layout version="0.1.0">
+
+    <hhennes_cmsversions_page_preview>
+        <reference name="content">
+            <block type="core/template" name="page_version" template="hhennes/cmsversions/page_version.phtml"/>
+        </reference>
+    </hhennes_cmsversions_page_preview>
+
+</layout>

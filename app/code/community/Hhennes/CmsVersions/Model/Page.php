@@ -11,7 +11,7 @@ class Hhennes_CmsVersions_Model_Page extends Mage_Core_Model_Abstract {
      */
     protected function _construct()
     {
-        $this->_init('hhennes_cmsversions/page');
+        $this->_init('Hhennes_CmsVersions/page');
     }
     
 }

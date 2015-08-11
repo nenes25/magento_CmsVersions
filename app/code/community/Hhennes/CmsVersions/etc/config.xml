@@ -59,7 +59,7 @@
                 <connection>
                     <use>core_setup</use>
                 </connection>
-            </hhennes_setup>
+            </hhennescms_setup>
             <hhennescms_write>
                 <connection>
                     <use>core_write</use>
@@ -128,16 +128,16 @@
             <cms>
                 <children>
                     <Hhennes_CmsVersions translate="title" module="Hhennes_CmsVersions">
-                        <title>Sauvegardes</title>
+                        <title>Backups</title>
                         <sort_order>20</sort_order>
                         <children>
                             <Hhennes_CmsVersions_page translate="title" module="Hhennes_CmsVersions">
-                                <title>Sauvegardes Pages</title>
+                                <title>Pages</title>
                                 <sort_order>10</sort_order>
                                 <action>Hhennes_CmsVersions/adminhtml_page</action>  
                             </Hhennes_CmsVersions_page>
                             <Hhennes_CmsVersions_block translate="title" module="Hhennes_CmsVersions">
-                                <title>Sauvegardes Blocs Statiques</title>
+                                <title>Blocks</title>
                                 <sort_order>20</sort_order>
                                 <action>Hhennes_CmsVersions/adminhtml_block</action>  
                             </Hhennes_CmsVersions_block>
@@ -153,16 +153,16 @@
                         <cms>
                             <children>
                                 <Hhennes_CmsVersions translate="title" module="Hhennes_CmsVersions">
-                                    <title>Sauvegardes</title>
+                                    <title>Backups</title>
                                     <sort_order>20</sort_order>
                                     <children>
                                         <Hhennes_CmsVersions_page translate="title" module="Hhennes_CmsVersions">
-                                            <title>Sauvegardes Pages</title>
+                                            <title>Pages</title>
                                             <sort_order>10</sort_order>
                                             <action>Hhennes_CmsVersions/adminhtml_page</action>  
                                         </Hhennes_CmsVersions_page>
                                         <Hhennes_CmsVersions_block translate="title" module="Hhennes_CmsVersions">
-                                            <title>Sauvegardes Blocs Statiques</title>
+                                            <title>Blocks</title>
                                             <sort_order>20</sort_order>
                                             <action>Hhennes_CmsVersions/adminhtml_block</action>  
                                         </Hhennes_CmsVersions_block>
@@ -198,14 +198,14 @@
                 <use>standard</use>
                 <args>
                     <module>Hhennes_CmsVersions</module>
-                    <frontName>Hhennes_CmsVersions</frontName>
+                    <frontName>hhennes_cmsversions</frontName>
                 </args>
             </Hhennes_CmsVersions>
         </routers>
         <layout>
             <updates>
                 <Hhennes_CmsVersions>
-                    <file>Hhennes_CmsVersions.xml</file>
+                    <file>hhennes_cmsversions.xml</file>
                 </Hhennes_CmsVersions>
             </updates>
         </layout>

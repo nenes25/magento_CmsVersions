@@ -1,0 +1,22 @@
+<?php
+/**
+ * Template d'affichage d'une version de page
+ *
+ */
+//Récupération des informations de la page
+$pageId = $this->getRequest()->getParam('version_id');
+$pageVersion = Mage::getModel('Hhennes_CmsVersions/page')->load($pageId);
+
+?>
+<div class="breadcrumbs">
+    <ul>
+        <li class="home">
+            <a title="Aller à la page d'accueil" href="<?php echo $this->getBaseUrl(); ?>">Accueil</a>
+            <span>&gt; </span>
+        </li>
+        <li class="cms_page">
+            <strong><?php echo $pageVersion->getTitle(); ?></strong>
+        </li>
+    </ul>
+</div>
+<div class="std"><?php echo $pageVersion->getPageContent(); ?></div>

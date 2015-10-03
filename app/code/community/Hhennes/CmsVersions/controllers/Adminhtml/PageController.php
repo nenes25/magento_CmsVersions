@@ -54,10 +54,8 @@ class Hhennes_CmsVersions_Adminhtml_PageController extends Mage_Adminhtml_Contro
             $this->getLayout()->getBlock('head')
                     ->setCanLoadExtJs(true)
                     ->setCanLoadTinyMce(true);
-            $this->_addContent($this->getLayout()
-                            ->createBlock('Hhennes_CmsVersions/adminhtml_page_edit'))
-                    ->_addLeft($this->getLayout()
-                            ->createBlock('Hhennes_CmsVersions/adminhtml_page_edit_tabs')
+            $this->_addContent($this->getLayout()->createBlock('Hhennes_CmsVersions/adminhtml_page_edit'))
+                 ->_addLeft($this->getLayout()->createBlock('Hhennes_CmsVersions/adminhtml_page_edit_tabs')
             );
             $this->renderLayout();
         } 

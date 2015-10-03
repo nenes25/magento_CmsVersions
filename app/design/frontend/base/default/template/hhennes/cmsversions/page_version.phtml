@@ -3,15 +3,20 @@
  * Template d'affichage d'une version de page
  *
  */
-//Récupération des informations de la page
+//RÃ©cupÃ©ration des informations de la page
 $pageId = $this->getRequest()->getParam('version_id');
 $pageVersion = Mage::getModel('Hhennes_CmsVersions/page')->load($pageId);
 
+//Traitement du contenu de la page
+$processor = Mage::helper('cms')->getPageTemplateProcessor();
+$html = $processor->filter($pageVersion->getPageContent());
+
+//@ToDO : Breadcrumb Ã  faire via le layout dans le code du block
 ?>
 <div class="breadcrumbs">
     <ul>
         <li class="home">
-            <a title="Aller à la page d'accueil" href="<?php echo $this->getBaseUrl(); ?>">Accueil</a>
+            <a title="Aller Ã  la page d'accueil" href="<?php echo $this->getBaseUrl(); ?>">Accueil</a>
             <span>&gt; </span>
         </li>
         <li class="cms_page">
@@ -19,4 +24,4 @@ $pageVersion = Mage::getModel('Hhennes_CmsVersions/page')->load($pageId);
         </li>
     </ul>
 </div>
-<div class="std"><?php echo $pageVersion->getPageContent(); ?></div>
+<div class="std"><?php echo $html; ?></div>

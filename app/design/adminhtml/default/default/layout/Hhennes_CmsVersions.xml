@@ -40,4 +40,12 @@
         </reference>
     </hhennes_cmsversions_adminhtml_block_index>
     
+    <!-- Ajout d'un onglet sur les versions des pages cms -->
+    <adminhtml_cms_page_edit>
+        <reference name="cms_page_edit_tabs">
+            <block type="Hhennes_CmsVersions/adminhtml_cms_page_tab_cmsversions" name="cms_page_tab_cmsversion" />
+            <action method="addTab"><name>cms_versions</name><block>Hhennes_CmsVersions/adminhtml_cms_page_tab_cmsversions</block></action>
+        </reference>
+    </adminhtml_cms_page_edit>
+    
 </layout>

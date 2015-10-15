@@ -1,0 +1,6 @@
+app/code/community/Hhennes/CmsVersions/  app/code/community/Hhennes/CmsVersions/
+app/etc/modules/Hhennes_CmsVersions.xml  app/etc/modules/Hhennes_CmsVersions.xml
+app/locale/fr_FR/Hhennes_CmsVersions.csv app/locale/fr_FR/Hhennes_CmsVersions.csv
+app/design/adminhtml/default/default/layout/Hhennes_CmsVersions.xml  app/design/adminhtml/default/default/layout/Hhennes_CmsVersions.xml
+app/design/frontend/base/default/layout/hhennes_cmsversions.xml  app/design/frontend/base/default/layout/hhennes_cmsversions.xml
+app/design/frontend/base/default/template/hhennes/cmsversions/  app/design/frontend/base/default/template/hhennes/cmsversions/

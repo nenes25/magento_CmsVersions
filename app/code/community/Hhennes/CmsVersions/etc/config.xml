@@ -210,5 +210,12 @@
             </updates>
         </layout>
     </frontend>
-
+    	<!-- Tests -->
+    <phpunit>
+        <suite>
+            <modules>
+                <Hhennes_CmsVersions />
+            </modules>
+        </suite>
+    </phpunit>
 </config>

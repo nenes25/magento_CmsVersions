@@ -21,7 +21,6 @@ class Hhennes_CmsVersions_Model_Observer {
         $page = $observer->getEvent()->getObject();
         
         //Nos nouvelles variable à insérer
-        //Nos nouvelles variables à insérer
         $newDatas = array(
             'page_id' => $page->getPageId(),
             'title' => $page->getTitle(),
@@ -32,12 +31,17 @@ class Hhennes_CmsVersions_Model_Observer {
             'date_add' => date('Y-m-d H:i:s')
         );
         
-        //Récupération des ressources BDD
-        $write = Mage::getSingleton('core/resource')->getConnection('core_write');
-        $tableName = Mage::getSingleton('core/resource')->getTableName('cms_page_versions');
-       
-        //Insertion des données dans la table
-        $write->insert($tableName,$newDatas);
+        //Insertion et sauvegarde des nouvelles données
+		$savePage = Mage::getModel('Hhennes_CmsVersions/page');
+		$savePage->setData($newDatas);
+		
+        try {
+			$savePage->save();
+		} catch ( Exception $e ) {
+			Mage::logException($e);
+		}
+		
+		$this->_deleteOldVersions($savePage);
     }
     
     /**
@@ -46,16 +50,12 @@ class Hhennes_CmsVersions_Model_Observer {
      */
     public function deletePageVersion(Varien_Event_Observer $observer ) {
         
-        //Récupération de l'objet page
         $page = $observer->getEvent()->getObject();
-        
-        //Récupération des ressources BDD
-        $write = Mage::getSingleton('core/resource')->getConnection('core_write');
-        $tableName = Mage::getSingleton('core/resource')->getTableName('cms_page_versions');
-        
-        //Suppression des données
-        $conditions = array($write->quoteInto('page_id=?', $page->getPageId()));  
-        $write->delete($tableName,$conditions);
+
+		$pageCollection = Mage::getModel('Hhennes_CmsVersions/page')->getCollection()
+				 ->addFieldToFilter('page_version_id',$page->getBlockId());
+		
+		$pageCollection->walk('delete');	
         
     }
     
@@ -79,12 +79,17 @@ class Hhennes_CmsVersions_Model_Observer {
             'date_add' => date('Y-m-d H:i:s')
         );
         
-        //Récupération des ressources BDD
-        $write = Mage::getSingleton('core/resource')->getConnection('core_write');
-        $tableName = Mage::getSingleton('core/resource')->getTableName('cms_block_versions');
-       
-        //Insertion des données dans la table
-        $write->insert($tableName,$newDatas);
+		//Insertion et sauvegarde des nouvelles données
+		$saveBlock = Mage::getModel('Hhennes_CmsVersions/block');
+		$saveBlock->setData($newDatas);
+		
+        try {
+			$saveBlock->save();
+		} catch ( Exception $e ) {
+			Mage::logException($e);
+		}
+		
+		$this->_deleteOldVersions($saveBlock);
     }
     
     
@@ -97,20 +102,25 @@ class Hhennes_CmsVersions_Model_Observer {
         //Récupération de l'objet page
         $block = $observer->getEvent()->getObject();
         
-        //Récupération des ressources BDD
-        $write = Mage::getSingleton('core/resource')->getConnection('core_write');
-        $tableName = Mage::getSingleton('core/resource')->getTableName('cms_page_versions');
-        
-        //Suppression des données
-        $conditions = array($write->quoteInto('block_id=?', $block->getBlockId()));  
-        $write->delete($tableName,$conditions);
-        
+        //Récupération des sauvegarde de ce block
+		$blockCollection = Mage::getModel('Hhennes_CmsVersions/block')->getCollection()
+				 ->addFieldToFilter('block_id',$block->getBlockId());
+		
+		//Suppression
+		$blockCollection->walk('delete');		 
+			 
     }
     
     /**
-     * @todo : On garde un nombre maximum de sauvegarde par page
+     * @todo : A implementer
      * une fois ce total dépassé on supprime les éléments en surplus.
+	 * @param $object PageVersion ou CMSversion
      */
+	 protected function  _deleteOldVersions( $object ) {
+		 
+		 return;
+		 
+	 }
    
 }
 ?>

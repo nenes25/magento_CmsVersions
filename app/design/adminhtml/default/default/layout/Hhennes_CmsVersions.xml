@@ -47,5 +47,23 @@
             <action method="addTab"><name>cms_versions</name><block>Hhennes_CmsVersions/adminhtml_cms_page_tab_cmsversions</block></action>
         </reference>
     </adminhtml_cms_page_edit>
+	
+	<adminhtml_cms_block_edit>
+		<reference name="left">
+			<block type="Hhennes_CmsVersions/adminhtml_cms_block_edit_tabs" name="cms_block_edit_tabs">
+			
+				<block type="Hhennes_CmsVersions/adminhtml_cms_bloc_edit_tab_content" name="cms_block_tab_content" />
+				<block type="Hhennes_CmsVersions/adminhtml_cms_bloc_edit_tab_cmsversions" name="cms_block_tab_cmsversion" />
+				
+				<action method="addTab"><name>content</name><block>Hhennes_CmsVersions/adminhtml_cms_block_edit_tab_content</block></action>
+				<action method="addTab"><name>cms_versions</name><block>Hhennes_CmsVersions/adminhtml_cms_block_edit_tab_cmsversions</block></action>
+				
+            </block>
+		</reference>
+		<reference name="content">
+			<!--<remove name="cms_block_edit" />-->
+            <block type="Hhennes_CmsVersions/adminhtml_cms_block_edit_form" name="cms_block_content_edit"></block>
+        </reference>
+	</adminhtml_cms_block_edit>
     
 </layout>

@@ -53,7 +53,7 @@ class Hhennes_CmsVersions_Model_Observer {
         $page = $observer->getEvent()->getObject();
 
 		$pageCollection = Mage::getModel('Hhennes_CmsVersions/page')->getCollection()
-				 ->addFieldToFilter('page_version_id',$page->getBlockId());
+				 ->addFieldToFilter('page_version_id',$page->getPageId());
 		
 		$pageCollection->walk('delete');	
         
@@ -112,13 +112,44 @@ class Hhennes_CmsVersions_Model_Observer {
     }
     
     /**
-     * @todo : A implementer
-     * une fois ce total dépassé on supprime les éléments en surplus.
+	 * Suppression des sauvegardes supérieures au nombre que l'on veut conserver
 	 * @param $object PageVersion ou CMSversion
      */
 	 protected function  _deleteOldVersions( $object ) {
 		 
-		 return;
+		 if ( $object instanceof Hhennes_CmsVersions_Model_Page ) {
+			 $collection = Mage::getModel('Hhennes_CmsVersions/page')->getCollection()
+						->addFieldToFilter('page_id',$object->getPageId());
+		 }
+		 else if ( $object instanceof Hhennes_CmsVersions_Model_Block  ) {
+			 $collection = Mage::getModel('Hhennes_CmsVersions/block')->getCollection()
+						->addFieldToFilter('block_id',$object->getBlockId());
+		 }
+		 
+		 $versionsToKeep = (int)Mage::getStoreConfig('cms/hhennes_cmsversions/nb_versions');
+		 $count = $collection->count();
+		 
+		 if ( $count >  $versionsToKeep ) {
+			 
+			 $collection->setOrder('date_add','ASC');
+			 
+			 $i=1;
+			 $toDelete =  $count - $versionsToKeep;
+			 foreach ( $collection as $object ) {
+				 if ( $i <= $toDelete) {
+					 try {
+						 $object->delete();
+					 } catch ( Exception $e) {
+						Mage::logException($e); 
+					 }	 
+				 }
+				 $i++;
+			 }
+			 
+		 }
+		 else {
+			return;
+		 }	
 		 
 	 }
    

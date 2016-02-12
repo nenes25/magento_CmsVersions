@@ -1,0 +1,39 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Configuration systeme du module
+ *
+ * @category    Hhennes
+ * @package     Hhennes_CmsVersions
+ * @license     http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
+ * @author herve - <contact@h-hennes.fr>
+ * @copyright Copyright (c) hhennes 2015 (http://www.h-hennes.fr)
+ */
+-->
+<config>
+<sections>
+  <cms>
+	<groups>
+	 <hhennes_cmsversions translate="label" module="Hhennes_CmsVersions">
+		 <label>Cms versions</label>
+			<frontend_type>text</frontend_type>
+			<sort_order>200</sort_order>
+			<show_in_default>1</show_in_default>
+			<show_in_website>0</show_in_website>
+			<show_in_store>0</show_in_store>
+			<fields>
+				<nb_versions translate="label comment">
+					<label></label>
+					<frontend_type>text</frontend_type>
+					<comment>Number of cms saves to keep</comment>
+					<sort_order>1</sort_order>
+					<show_in_default>1</show_in_default>
+					<show_in_website>0</show_in_website>
+					<show_in_store>0</show_in_store>
+				</nb_versions>
+			</fields>
+	 </hhennes_cmsversions>
+	</groups>
+	</cms>
+</sections>
+</config>

@@ -13,7 +13,7 @@
 <config>
     <modules>
         <Hhennes_CmsVersions>
-            <version>0.1.1</version>    
+            <version>0.1.2</version>    
         </Hhennes_CmsVersions>
     </modules>
     
@@ -210,6 +210,13 @@
             </updates>
         </layout>
     </frontend>
+	<default>
+		<cms>
+			<hhennes_cmsversions>
+				<nb_versions>10</nb_versions>
+			</hhennes_cmsversions>
+		</cms>
+	</default>
     	<!-- Tests -->
     <phpunit>
         <suite>
